@@ -123,5 +123,5 @@ async def research_pipeline(query):
 # RUN
 # ------------------------------------------------------------------------------
 if __name__ == "__main__":
-    test_query = "What are the main bottlenecks of current solid-state battery research?"
+   test_query = input("Please enter your research question: ")
     asyncio.run(research_pipeline(test_query))
