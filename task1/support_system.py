@@ -108,5 +108,5 @@ async def support_pipeline(user_input):
 # RUN
 # ------------------------------------------------------------------------------
 if __name__ == "__main__":
-    test_input = "My app is not working, it keeps crashing and I'm very upset."
+     test_input = input("Please enter your customer support question: ")
     asyncio.run(support_pipeline(test_input))
