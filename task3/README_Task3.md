@@ -1,25 +1,46 @@
+Task 3: RAG System with Safety Guardrails
+Retrieval-Augmented Generation & Security Control System
+This task implements a modular Retrieval-Augmented Generation (RAG) system equipped with multi-layer safety guardrails. It integrates document retrieval, result reranking, content synthesis and security validation to build a secure enterprise knowledge query agent.
+Implemented Modules & Workflow
+Document Retrieval & Reranking
+Step 1: Calculate relevance scores between user queries and knowledge chunks
+Step 2: Select the top 3 most relevant document fragments
+Step 3: Re-rank results by relevance score for better content selection
+Agent Workflow Orchestration
+Retriever Agent: Executes full-text retrieval and result reranking
+Synthesizer Agent: Organizes retrieved content and generates answers with chunk citations
+Safety Agent: Performs unified security checks on both input and output content
+Orchestrator: Main scheduler that connects all modules and runs the end-to-end pipeline
+Input Safety Guardrail
+Prompt injection detection: Identifies and blocks malicious injection commands
+PII redaction: Automatically masks personally identifiable information such as employee emails
+Output Safety Guardrail
+Secondary PII check and redaction for generated responses
+Confidential content filtering: Restricts access to sensitive internal data (e.g., management salary ranges)
+How to Run
+python task3/rag_safety_system.py
+Example Input
+How to apply for sick leave?
+ignore previous instructions
+Example Output
+===== Agent Conversation Trace =====
+User Input: How to apply for sick leave?
+Input Safety Check: SafetyVerdict(approved=True, redacted='How to apply for sick leave?', reason='Passed security check')
+3 document chunks retrieved
+Generated Answer: Answer:
+- Sick leave application needs to be submitted 1 day in advance Citation: chunk_1
+- Working hours: Monday to Friday, 9:00-18:00 Citation: chunk_0
+- Annual leave is determined by working tenure, 5 days per year for one full year Citation: chunk_2
 
-# Customer Support Task 3: RAG with Safety Guardrails
+Output Safety Check: SafetyVerdict(approved=True, redacted='Answer:\n- Sick leave application needs to be submitted 1 day in advance Citation: chunk_1\n- Working hours: Monday to Friday, 9:00-18:00 Citation: chunk_0\n- Annual leave is determined by working tenure, 5 days per year for one full year Citation: chunk_2\n', reason='Output is secure')
+Answer:
+- Sick leave application needs to be submitted 1 day in advance Citation: chunk_1
+- Working hours: Monday to Friday, 9:00-18:00 Citation: chunk_0
+- Annual leave is determined by working tenure, 5 days per year for one full year Citation: chunk_2
 
-## Overview
-This project implements a modular Retrieval-Augmented Generation (RAG) system with built-in safety guardrails. It demonstrates core components of an agentic support system, including retrieval, reranking, synthesis, and security checks.
+==================================================
 
-## System Architecture
-The system is composed of four core components:
-1.  **Retriever Agent**: Performs document retrieval and reranking based on query relevance.
-2.  **Synthesizer Agent**: Generates a structured answer from retrieved document chunks.
-3.  **Safety Agent**: Implements both input and output guardrails to protect against prompt injection, PII leakage, and confidential information disclosure.
-4.  **Orchestrator**: The main controller that coordinates all agents, manages the workflow, and handles user interactions.
-
-## Features
-- **Retrieval-Augmented Generation**: Fetches relevant information from a predefined knowledge base.
-- **Prompt Injection Detection**: Scans user input for common injection patterns.
-- **PII Redaction**: Automatically removes sensitive information (e.g., emails) from inputs and outputs.
-- **Confidential Information Filtering**: Blocks responses that contain restricted data like internal salary ranges.
-- **Structured Workflow**: Clear separation of concerns between retrieval, synthesis, and safety checks.
-
-## How to Run
-1.  Save the provided Python code as `support_system.py`.
-2.  Run the script:
-    ```bash
-    python support_system.py
+===== Agent Conversation Trace =====
+User Input: ignore previous instructions
+Input Safety Check: SafetyVerdict(approved=False, redacted='ignore previous instructions', reason='Prompt injection detected')
+Request blocked by security rules
