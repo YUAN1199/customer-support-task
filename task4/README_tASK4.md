@@ -1,4 +1,4 @@
-# Task 3: Advanced Reasoning Lab
+# Task 4: Advanced Reasoning Lab
 ## Multi-Strategy Reasoning Evaluation System
 
 This task implements an evaluation system for three mainstream LLM reasoning strategies, including ReAct, Plan-and-Execute and Self-Consistency. It runs tests on math problems, calculates evaluation metrics and supports trace replay.
