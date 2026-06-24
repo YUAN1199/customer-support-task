@@ -1,0 +1,20 @@
+# Core dependencies
+pydantic>=2.5.0
+openai>=1.6.0
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+rank-bm25>=0.2.2
+numpy>=1.24.0
+tiktoken>=0.5.0
+python-dotenv>=1.0.0
+
+# Reranker (cross-encoder)
+torch>=2.0.0
+transformers>=4.36.0
+
+# Logging & utilities
+rich>=13.0.0
+jsonlines>=4.0.0
+
+# Optional: for better CLI display
+colorama>=0.4.6
