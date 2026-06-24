@@ -1,0 +1,1 @@
+"""RAG pipeline: ingestion, hybrid retrieval, reranking, and citation tracking."""
