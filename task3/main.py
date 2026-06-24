@@ -1,21 +1,3 @@
-"""Enterprise Knowledge Assistant - Main Entry Point
-
-Usage:
-    # Ingest corpus and run full system
-    python main.py --ingest --query "What is the password policy?"
-
-    # Run retrieval evaluation
-    python main.py --eval
-
-    # Run red-team tests
-    python main.py --red-team
-
-    # Run all: eval + red-team + demo queries
-    python main.py --all
-
-    # Interactive mode
-    python main.py --ingest --interactive
-"""
 
 import os
 import sys
