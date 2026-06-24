@@ -1,0 +1,1 @@
+"""Safety module: input guardrails, output guardrails, incident logging."""
